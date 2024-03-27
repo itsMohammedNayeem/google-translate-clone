@@ -3,9 +3,11 @@ import React from 'react'
 
 const TranslatePage = () => {
     auth().protect();
+
+    const { userId } = auth();
     
   return (
-    <div>TranslatePage</div>
+    <div>TranslatePage: {userId}</div>
   )
 }
 
