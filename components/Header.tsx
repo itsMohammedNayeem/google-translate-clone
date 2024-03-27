@@ -10,7 +10,7 @@ const Header = () => {
 
   return (
     <header className="flex items-center justify-between px-8 border-b mb-5">
-      <div className="">
+      <div className="h-20 flex items-center justify-center overflow-hidden">
         <Link href="/">
           <Image
             src="https://links.papareact.com/xgu"
