@@ -1,5 +1,6 @@
 "use client";
 
+import translate from "@/actions/translate";
 import { TranslationLanguages } from "@/app/translate/page";
 import {
   Select,
@@ -12,18 +13,29 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
+import { useFormState } from "react-dom";
+
+const initialState = {
+  inputLanguage: "auto",
+  outputLanguage: "es",
+  input: "",
+  output: "",
+};
+
+export type State = typeof initialState;
 
 const TranslationForm = ({
   languages,
 }: {
   languages: TranslationLanguages;
 }) => {
+  const [state, formAction] = useFormState(translate, initialState);
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
 
   return (
     <div>
-      <form>
+      <form action={formAction}>
         <div>
           <Select name="inputLanguage" defaultValue="auto">
             <SelectTrigger className="w-[280px]">
